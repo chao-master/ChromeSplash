@@ -7,9 +7,6 @@
   "icons": {},
 
   "author": "Ripp",
-  "background": {
-    "persistent": false
-  },
   "chrome_url_overrides": {
       "newtab":"newTab.html"
   },
