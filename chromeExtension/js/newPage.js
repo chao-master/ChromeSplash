@@ -1,15 +1,16 @@
 function addBookmarksToTree(bookmarkNode,treeNode){
     var elem = $("<li>").appendTo(treeNode);
     if (bookmarkNode.url){
-        $("<img>").attr("src","http://www.google.com/s2/favicons?domain="+encodeURIComponent(bookmarkNode.url))
-            .appendTo(elem);
+        $("<a>").attr("href",bookmarkNode.url).append(
+            $("<img>").attr("src","http://www.google.com/s2/favicons?domain="+encodeURIComponent(bookmarkNode.url))
+        ).appendTo(elem);
     } else {
         var icon = $('<i class="fa fa-folder"></i>')
             .appendTo(elem);
     }
     if (bookmarkNode.children){
+        var list = $("<ul>").appendTo(elem)
         for(var i=0;i<bookmarkNode.children.length;i++){
-            var list = $("<ul>").appendTo(elem)
             addBookmarksToTree(bookmarkNode.children[i],list);
         }
     }
